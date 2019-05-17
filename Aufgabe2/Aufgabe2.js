@@ -11,7 +11,8 @@ window.addEventListener("load", function(){
     let windrichtung = document.getElementById("richtung");
     let richtung = ["N", "NO", "O", "SO", "S", "SW", "W", "NW", "N"];
 
-    draw();
+    drawClouds();
+    drawOcean();
     drawFlag(flag.value);
 
     windrichtung.innerText = "-";
@@ -107,15 +108,16 @@ function drawClouds(){
 function drawOcean(){
     let canvas = document.getElementById("einCanvas");
     let ctx = canvas.getContext("2d");
+    let numberArray = [];
 
     ctx.beginPath();
     ctx.moveTo(-50, 450);
-    ctx.bezierCurveTo(-50, 500 , 50, 500, 50, 450);
-    ctx.bezierCurveTo(50, 500, 150, 500, 150, 450);
-    ctx.bezierCurveTo(150, 500, 250, 500, 250, 450);
-    ctx.bezierCurveTo(250, 500, 350, 500, 350, 450);
-    ctx.bezierCurveTo(350, 500, 450, 500, 450, 450);
-    ctx.bezierCurveTo(450, 500, 550, 500, 550, 450);
+    ctx.bezierCurveTo(-50, 500 , 50, 500, range(50), 450);
+    ctx.bezierCurveTo(50, 500, 150, 500, range(150), 450);
+    ctx.bezierCurveTo(150, 500, 250, 500, range(250), 450);
+    ctx.bezierCurveTo(250, 500, 350, 500, range(350), 450);
+    ctx.bezierCurveTo(350, 500, 450, 500, range(450), 450);
+    ctx.bezierCurveTo(450, 500, 550, 500, range(550), 450);
     ctx.lineTo(550, 650);
     ctx.lineTo(-50, 650);
     ctx.lineTo(-50, 450);
@@ -253,6 +255,13 @@ function drawDreieck(ctx, entf) {
 
     return ctx;
 
+}
+
+function range (number){
+
+    rand = Math.floor(Math.random() * 20);
+
+    return (number - rand);
 }
 
 
