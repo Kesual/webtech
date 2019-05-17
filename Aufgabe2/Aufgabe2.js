@@ -1,6 +1,6 @@
 // Begin
 
-window.onload = function(){
+window.addEventListener("load", function(){
 
     let rotate = document.getElementById("rotate");
     let flag = document.getElementById("flag");
@@ -9,38 +9,49 @@ window.onload = function(){
     let maxHight = canvas.getAttribute("height");
     let maxWidth = canvas.getAttribute("width");
     let windrichtung = document.getElementById("richtung");
+    let richtung = ["N", "NO", "O", "SO", "S", "SW", "W", "NW", "N"];
 
     draw();
     drawFlag(flag.value);
 
+    windrichtung.innerText = "-";
+
     rotate.addEventListener("input", function () {
 
         let rotation = [0, 45, 90, 135, 180, 225, 270, 315, 360];
-        let richtung = ["N", "NO", "O", "SO", "S", "SW", "W", "NW", "N"];
 
-        ctx.save();
-        ctx.clearRect(0, 0, maxWidth, maxHight);
-        draw();
-        ctx.translate(maxWidth/2, maxHight/2);
-        ctx.rotate(rotation[rotate.value] * Math.PI/180);
-        ctx.translate(-maxWidth/2, -maxHight/2);
-        drawFlag(flag.value);
-        ctx.restore();
+        if (flag.value !== "0") {
+            ctx.save();
+            ctx.clearRect(0, 0, maxWidth, maxHight);
+            draw();
+            ctx.translate(maxWidth / 2, maxHight / 2);
+            ctx.rotate(rotation[rotate.value] * Math.PI / 180);
+            ctx.translate(-maxWidth / 2, -maxHight / 2);
+            drawFlag(flag.value);
+            ctx.restore();
 
-        windrichtung.innerText = richtung[rotate.value];
+            windrichtung.innerText = richtung[rotate.value];
+        } else {
+            windrichtung.innerText = "-";
+        }
     });
 
     flag.addEventListener("input", function () {
 
-        ctx.save();
-        ctx.clearRect(0, 0, maxWidth, maxHight);
-        draw();
-        drawFlag(flag.value);
-        ctx.restore();
+            ctx.save();
+            ctx.clearRect(0, 0, maxWidth, maxHight);
+            draw();
+            drawFlag(flag.value);
+            ctx.restore();
 
+        if (flag.value !== "0") {
+            windrichtung.innerText = richtung[rotate.value];
+        } else {
+            windrichtung.innerText = "-";
+        }
     });
 
-};
+});
 
 function draw(){
 
