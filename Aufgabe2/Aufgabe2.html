@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        canvas{
+            background-color: cornflowerblue;
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+        .center{
+            text-align: center;
+        }
+    </style>
+    <title>Aufgabe1</title>
+    <script src="Aufgabe2.js"></script>
+</head>
+<body>
+
+<canvas id="einCanvas" width="450" height="600"></canvas>
+
+<div class="center">
+    <span id="richtung">N</span><br>
+    <label> Windrichtung
+        <input id="rotate" type="range" min="0" max="8" value="0"><br>
+    </label>
+    <label> Windstärke
+        <input id="flag" type="number" size="8" step="5" min="0"
+               max="105" value="0"><br>
+    </label>
+</div>
+</body>
+</html>

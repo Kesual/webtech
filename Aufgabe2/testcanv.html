@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <style>
+        canvas{
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+
+        window.addEventListener("load", function () {
+
+            setInterval(rotate, 10);
+
+        });
+
+        function draw() {
+            let cnvs = document.getElementById("einCanvas");
+            let ctx = cnvs.getContext("2d");
+
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = "black";
+            ctx.beginPath();
+            ctx.moveTo((cnvs.getAttribute("width") / 2), (cnvs.getAttribute("height") / 2));
+            ctx.lineTo((cnvs.getAttribute("width") / 2), (cnvs.getAttribute("height") / 5));
+            ctx.closePath();
+            ctx.stroke();
+        }
+
+        function rotate() {
+
+            let cnvs = document.getElementById("einCanvas");
+            let ctx = cnvs.getContext("2d");
+
+            ctx.clearRect(0,0, (cnvs.getAttribute("width")), (cnvs.getAttribute("height")));
+
+            ctx.translate((cnvs.getAttribute("width") / 2), (cnvs.getAttribute("height") / 2));
+            ctx.rotate(1 * (Math.PI/180));
+            ctx.translate(-(cnvs.getAttribute("width") / 2), -(cnvs.getAttribute("height") / 2));
+            draw();
+
+        }
+
+    </script>
+</head>
+<body>
+
+<canvas id="einCanvas" width="300" height="300"></canvas>
+
+</body>
+</html>
