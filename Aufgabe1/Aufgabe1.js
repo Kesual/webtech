@@ -27,7 +27,6 @@ function draw(){
 
     drawClouds();
     drawOcean();
-    alert ("Hello");
 
 }
 
