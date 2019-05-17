@@ -145,7 +145,7 @@ function drawFlag(type) {
         restzehn = restdrei % 10;
 
         for (i = 0; i < zehn; i++){
-            ctx = drawStrichGroß(ctx, abstand);
+            ctx = drawStrichGross(ctx, abstand);
             abstand += 20;
         }
 
@@ -159,6 +159,8 @@ function drawFlag(type) {
         console.log("Anzahl 5er Fahnen: " + fuenf + "\n" +
             "Anzahl 10er Fahnen: " + zehn + "\n" +
             "Anzahl 50er Fahnen: " + drei);
+
+        // Durch diesen Zahlen Algorithmus kommt man an die Anzahl der jeweiligen Fahnen
 
         ctx.closePath();
         ctx.fillStyle = "black";
@@ -187,7 +189,7 @@ function drawStrichKlein(ctx, entf) {
 
 }
 
-function drawStrichGroß(ctx, entf) {
+function drawStrichGross(ctx, entf) {
 
     let canvas = document.getElementById("einCanvas");
 
@@ -227,7 +229,7 @@ function drawDreieck(ctx, entf) {
 
 function range (number){
 
-    rand = Math.floor(Math.random() * 20);
+    let rand = Math.floor(Math.random() * 20);
 
     return (number - rand);
 }
