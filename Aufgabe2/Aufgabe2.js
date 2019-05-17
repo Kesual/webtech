@@ -69,10 +69,10 @@ function drawClouds(){
     //Cloud 1
     ctx.beginPath();
     ctx.moveTo(70, 70);
-    ctx.bezierCurveTo(60, range(100), range(150), range(100), range(140), 70);
-    ctx.bezierCurveTo(160, range(80), range(160), range(40), range(140), 50);
-    ctx.bezierCurveTo(150, range(10), range(60), range(10), range(70), 50);
-    ctx.bezierCurveTo(60, range(40), range(40), range(80) , range(70),70);
+    ctx.bezierCurveTo(60,100,150,100,140, 70);
+    ctx.bezierCurveTo(160,80, 160,40, 140, 50);
+    ctx.bezierCurveTo(150, 10, 60, 10, 70, 50);
+    ctx.bezierCurveTo(60, 40, 40, 80 , 70,70);
     ctx.closePath();
     ctx.fillStyle = "white";
     ctx.fill();
@@ -81,10 +81,10 @@ function drawClouds(){
     //Cloud 2
     ctx.beginPath();
     ctx.moveTo(170, 120);
-    ctx.bezierCurveTo(160, range(150), range(250), range(150), range(240), 120);
-    ctx.bezierCurveTo(260, range(130), range(260), range(90), range(240), 100);
-    ctx.bezierCurveTo(250, range(60), range(160), range(60), range(170), 100);
-    ctx.bezierCurveTo(160, range(90), range(140), range(130) , range(170),120);
+    ctx.bezierCurveTo(160, 150, 250, 150, 240, 120);
+    ctx.bezierCurveTo(260, 130, 260, 90, 240, 100);
+    ctx.bezierCurveTo(250, 60, 160, 60, 170, 100);
+    ctx.bezierCurveTo(160, 90, 140, 130, 170,120);
     ctx.closePath();
     ctx.fillStyle = "white";
     ctx.fill();
@@ -93,10 +93,10 @@ function drawClouds(){
     //Cloud 3
     ctx.beginPath();
     ctx.moveTo(270, 70);
-    ctx.bezierCurveTo(260, range(100), range(350), range(100), range(340), 70);
-    ctx.bezierCurveTo(360, range(80), range(360), range(40), range(340), 50);
-    ctx.bezierCurveTo(350, range(10), range(260), range(10), range(270), 50);
-    ctx.bezierCurveTo(260, range(40), range(240), range(80) , range(270),70);
+    ctx.bezierCurveTo(260, 100, 350, 100, 340, 70);
+    ctx.bezierCurveTo(360, 80, 360, 40, 340, 50);
+    ctx.bezierCurveTo(350, 10, 260, 10, 270, 50);
+    ctx.bezierCurveTo(260, 40, 240, 80, 270,70);
     ctx.closePath();
     ctx.fillStyle = "white";
     ctx.fill();
@@ -110,11 +110,11 @@ function drawOcean(){
 
     ctx.beginPath();
     ctx.moveTo(-50, 450);
-    ctx.bezierCurveTo(-50, 500 , 50, 500, range(50), 450);
-    ctx.bezierCurveTo(50, 500, 150, 500, range(150), 450);
-    ctx.bezierCurveTo(150, 500, 250, 500, range(250), 450);
-    ctx.bezierCurveTo(250, 500, 350, 500, range(350), 450);
-    ctx.bezierCurveTo(350, 500, 450, 500, range(450), 450);
+    ctx.bezierCurveTo(-50, 500 , 50, 500, 50, 450);
+    ctx.bezierCurveTo(50, 500, 150, 500, 150, 450);
+    ctx.bezierCurveTo(150, 500, 250, 500, 250, 450);
+    ctx.bezierCurveTo(250, 500, 350, 500, 350, 450);
+    ctx.bezierCurveTo(350, 500, 450, 500, 450, 450);
     ctx.bezierCurveTo(450, 500, 550, 500, 550, 450);
     ctx.lineTo(550, 650);
     ctx.lineTo(-50, 650);
@@ -175,7 +175,7 @@ function drawFlag(type) {
         restzehn = restdrei % 10;
 
         for (i = 0; i < zehn; i++){
-            ctx = drawStrichGroß(ctx, abstand);
+            ctx = drawStrichGross(ctx, abstand);
             abstand += 20;
         }
 
@@ -217,7 +217,7 @@ function drawStrichKlein(ctx, entf) {
 
 }
 
-function drawStrichGroß(ctx, entf) {
+function drawStrichGross(ctx, entf) {
 
     let canvas = document.getElementById("einCanvas");
 
@@ -253,13 +253,6 @@ function drawDreieck(ctx, entf) {
 
     return ctx;
 
-}
-
-function range (number){
-
-    rand = Math.floor(Math.random() * 20);
-
-    return (number - rand);
 }
 
 
