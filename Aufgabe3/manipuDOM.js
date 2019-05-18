@@ -231,10 +231,9 @@ window.addEventListener("load", function(){
 
         } // set func loop
 
+
         if (min > 10){min -= 10;} else {min = 1;}
         if (max > 10){max -= 10;} else {max = 5;}
-        //if (margin > 10){margin -= 10;} else {margin = 5;}
-
         margin = max;
 
     }); // Button - 10 Pixel
@@ -465,8 +464,8 @@ function setInnerDivs(min, max, margin) {
 function numberGen(min, max) {
     let random;
 
-        random = Math.round(Math.random() * (max - min)) + min;
-        return random;
+    random = Math.round(Math.random() * (max - min)) + min;
+    return random;
 }
 
 function randColor(max) {
