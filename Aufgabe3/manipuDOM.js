@@ -231,8 +231,9 @@ window.addEventListener("load", function(){
 
         } // set func loop
 
-        if (min > 10){ min -= 10; console.log(min);} else {min = 1; console.log("Hier1");}
-        if (max > 10){ max -= 10; console.log(max);} else {max = 5; console.log("Hier2");}
+
+        if (min > 10){min -= 10;} else {min = 1;}
+        if (max > 10){max -= 10;} else {max = 5;}
         margin = max;
 
     }); // Button - 10 Pixel
@@ -463,16 +464,8 @@ function setInnerDivs(min, max, margin) {
 function numberGen(min, max) {
     let random;
 
-    if (min <= 0 || max <= 0) {
-        random = Math.round(Math.random() * (max - 1)) + 1;
-        return random;
-    } else if (min <= 0 && max <= 0){
-        random = Math.round(Math.random() * (2 - 1)) + 1;
-        return random;
-    } else {
-        random = Math.round(Math.random() * (max - min)) + min;
-        return random;
-    }
+    random = Math.round(Math.random() * (max - min)) + min;
+    return random;
 }
 
 function randColor(max) {
