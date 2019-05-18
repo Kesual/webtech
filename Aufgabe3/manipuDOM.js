@@ -233,7 +233,7 @@ window.addEventListener("load", function(){
 
         if (min > 10){min -= 10;} else {min = 1;}
         if (max > 10){max -= 10;} else {max = 5;}
-        margin -= max;
+        if (margin > 10){margin -= 10;} else {margin = 5;}
 
     }); // Button - 10 Pixel
 
@@ -463,18 +463,8 @@ function setInnerDivs(min, max, margin) {
 function numberGen(min, max) {
     let random;
 
-    if (min < 0) {
-        random = Math.round(Math.random() * (max - 1)) + 1;
-        return random;
-    } else if (min < 0 && max < 0){
-
-        random = Math.round(Math.random() * (1 - 1)) + 1;
-        return random;
-
-        } else {
         random = Math.round(Math.random() * (max - min)) + min;
         return random;
-    }
 }
 
 function randColor(max) {
