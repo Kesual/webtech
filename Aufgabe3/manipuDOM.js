@@ -180,7 +180,7 @@ window.addEventListener("load", function(){
 
         removeInnerDivs();
 
-        setInnerDivs(min - 10, max - 10, margin - 10);
+        setInnerDivs(min, max, margin);
 
         colorDivs = document.getElementsByName("colorDiv");
         textDivs = document.getElementsByName("textDiv");
@@ -231,9 +231,9 @@ window.addEventListener("load", function(){
 
         } // set func loop
 
-        min -= 10;
-        max -= 10;
-        margin -= 10;
+        if (min > 10){min -= 10;} else {min = 1;}
+        if (max > 10){max -= 10;} else {max = 5;}
+        margin -= max;
 
     }); // Button - 10 Pixel
 
