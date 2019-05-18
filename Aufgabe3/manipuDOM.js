@@ -180,7 +180,7 @@ window.addEventListener("load", function(){
 
         removeInnerDivs();
 
-        setInnerDivs(min - 10, max - 10, margin - 10);
+        setInnerDivs(min, max, margin);
 
         colorDivs = document.getElementsByName("colorDiv");
         textDivs = document.getElementsByName("textDiv");
@@ -231,9 +231,9 @@ window.addEventListener("load", function(){
 
         } // set func loop
 
-        min -= 10;
-        max -= 10;
-        margin -= 10;
+        if (min > 10){ min -= 10; console.log(min);} else {min = 1; console.log("Hier1");}
+        if (max > 10){ max -= 10; console.log(max);} else {max = 5; console.log("Hier2");}
+        margin = max;
 
     }); // Button - 10 Pixel
 
@@ -463,15 +463,13 @@ function setInnerDivs(min, max, margin) {
 function numberGen(min, max) {
     let random;
 
-    if (min < 0) {
+    if (min <= 0 || max <= 0) {
         random = Math.round(Math.random() * (max - 1)) + 1;
         return random;
-    } else if (min < 0 && max < 0){
-
-        random = Math.round(Math.random() * (1 - 1)) + 1;
+    } else if (min <= 0 && max <= 0){
+        random = Math.round(Math.random() * (2 - 1)) + 1;
         return random;
-
-        } else {
+    } else {
         random = Math.round(Math.random() * (max - min)) + min;
         return random;
     }
