@@ -169,7 +169,7 @@ window.addEventListener("load", function(){
 
         } // set func loop
 
-        min += 10;
+        min += 10; // Ändern
         max += 10;
         margin += 10;
 
