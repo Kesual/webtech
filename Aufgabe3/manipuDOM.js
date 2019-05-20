@@ -169,9 +169,9 @@ window.addEventListener("load", function(){
 
         } // set func loop
 
-        min += 10;
-        max += 10;
-        margin += 10;
+        if (max <= 50){min = 10;} else {min += 10;}
+        if (max < 10){max = 10;} else {max += 10;}
+        margin = max;
 
     }); //Button + 10 Pixel
 
