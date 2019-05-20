@@ -109,15 +109,23 @@ function drawOcean(){
     let canvas = document.getElementById("einCanvas");
     let ctx = canvas.getContext("2d");
     let numberArray = [];
+    let number = 50;
+    let output;
+
+    for (let i = 0; i < 5; i++) {
+        output = range(number);
+        numberArray.push(output);
+        number += 100;
+    }
 
     ctx.beginPath();
     ctx.moveTo(-50, 450);
-    ctx.bezierCurveTo(-50, 500 , 50, 500, range(50), 450);
-    ctx.bezierCurveTo(50, 500, 150, 500, range(150), 450);
-    ctx.bezierCurveTo(150, 500, 250, 500, range(250), 450);
-    ctx.bezierCurveTo(250, 500, 350, 500, range(350), 450);
-    ctx.bezierCurveTo(350, 500, 450, 500, range(450), 450);
-    ctx.bezierCurveTo(450, 500, 550, 500, range(550), 450);
+    ctx.bezierCurveTo(-50, 500 , 50, 500, numberArray[0], 450);
+    ctx.bezierCurveTo(50, 500, 150, 500, numberArray[1], 450);
+    ctx.bezierCurveTo(150, 500, 250, 500, numberArray[2], 450);
+    ctx.bezierCurveTo(250, 500, 350, 500, numberArray[3], 450);
+    ctx.bezierCurveTo(350, 500, 450, 500, numberArray[4], 450);
+    ctx.bezierCurveTo(450, 500, 550, 500, numberArray[5], 450);
     ctx.lineTo(550, 650);
     ctx.lineTo(-50, 650);
     ctx.lineTo(-50, 450);
@@ -128,6 +136,8 @@ function drawOcean(){
     ctx.lineWidth = 1;
     ctx.strokeStyle = "#0000ff";
     ctx.stroke();
+
+    return numberArray;
 }
 
 function drawFlag(type) {
