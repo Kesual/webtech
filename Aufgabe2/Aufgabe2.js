@@ -61,13 +61,6 @@ window.addEventListener("load", function(){
 
 });
 
-function draw(){
-
-    drawClouds();
-    drawOcean();
-
-}
-
 function drawClouds(){
     let canvas = document.getElementById("einCanvas");
     let ctx = canvas.getContext("2d");
