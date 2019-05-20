@@ -10,9 +10,14 @@ window.addEventListener("load", function(){
     let maxWidth = canvas.getAttribute("width");
     let windrichtung = document.getElementById("richtung");
     let richtung = ["N", "NO", "O", "SO", "S", "SW", "W", "NW", "N"];
+    let waveArray = genArray();
+
+    for (let u = 0; u < waveArray.length; u++){
+        console.log(waveArray[u]);
+    }
 
     drawClouds();
-    drawOcean();
+    drawOcean(waveArray);
     drawFlag(flag.value);
 
     windrichtung.innerText = "-";
@@ -24,7 +29,8 @@ window.addEventListener("load", function(){
         if (flag.value !== "0") {
             ctx.save();
             ctx.clearRect(0, 0, maxWidth, maxHight);
-            draw();
+            drawClouds();
+            drawOcean(waveArray);
             ctx.translate(maxWidth / 2, maxHight / 2);
             ctx.rotate(rotation[rotate.value] * Math.PI / 180);
             ctx.translate(-maxWidth / 2, -maxHight / 2);
@@ -39,11 +45,12 @@ window.addEventListener("load", function(){
 
     flag.addEventListener("input", function () {
 
-            ctx.save();
-            ctx.clearRect(0, 0, maxWidth, maxHight);
-            draw();
-            drawFlag(flag.value);
-            ctx.restore();
+        ctx.save();
+        ctx.clearRect(0, 0, maxWidth, maxHight);
+        drawClouds();
+        drawOcean(waveArray);
+        drawFlag(flag.value);
+        ctx.restore();
 
         if (flag.value !== "0") {
             windrichtung.innerText = richtung[rotate.value];
@@ -105,27 +112,18 @@ function drawClouds(){
 
 }
 
-function drawOcean(){
+function drawOcean(array){
     let canvas = document.getElementById("einCanvas");
     let ctx = canvas.getContext("2d");
-    let numberArray = [];
-    let number = 50;
-    let output;
-
-    for (let i = 0; i < 5; i++) {
-        output = range(number);
-        numberArray.push(output);
-        number += 100;
-    }
 
     ctx.beginPath();
     ctx.moveTo(-50, 450);
-    ctx.bezierCurveTo(-50, 500 , 50, 500, numberArray[0], 450);
-    ctx.bezierCurveTo(50, 500, 150, 500, numberArray[1], 450);
-    ctx.bezierCurveTo(150, 500, 250, 500, numberArray[2], 450);
-    ctx.bezierCurveTo(250, 500, 350, 500, numberArray[3], 450);
-    ctx.bezierCurveTo(350, 500, 450, 500, numberArray[4], 450);
-    ctx.bezierCurveTo(450, 500, 550, 500, numberArray[5], 450);
+    ctx.bezierCurveTo(-50, 500 , 50, 500, array[0], 450);
+    ctx.bezierCurveTo(50, 500, 150, 500, array[1], 450);
+    ctx.bezierCurveTo(150, 500, 250, 500, array[2], 450);
+    ctx.bezierCurveTo(250, 500, 350, 500, array[3], 450);
+    ctx.bezierCurveTo(350, 500, 450, 500, array[4], 450);
+    ctx.bezierCurveTo(450, 500, 550, 500, array[5], 450);
     ctx.lineTo(550, 650);
     ctx.lineTo(-50, 650);
     ctx.lineTo(-50, 450);
@@ -136,8 +134,6 @@ function drawOcean(){
     ctx.lineWidth = 1;
     ctx.strokeStyle = "#0000ff";
     ctx.stroke();
-
-    return numberArray;
 }
 
 function drawFlag(type) {
@@ -272,6 +268,22 @@ function range (number){
     rand = Math.floor(Math.random() * 20);
 
     return (number - rand);
+}
+
+function genArray() {
+
+    let numberArray = [];
+    let number = 50;
+    let output;
+
+    for (let i = 0; i < 5; i++) {
+        output = range(number);
+        numberArray.push(output);
+        number += 100;
+    }
+
+    return numberArray;
+
 }
 
 
