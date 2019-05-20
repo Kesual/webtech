@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="22bba79f-9a63-4075-90c7-40b973ab1420" name="Default Changelist" comment="Fixed some code">
+    <list default="true" id="22bba79f-9a63-4075-90c7-40b973ab1420" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/Aufgabe2/Aufgabe2.js" beforeDir="false" afterPath="$PROJECT_DIR$/Aufgabe2/Aufgabe2.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,13 +43,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Aufgabe2/Aufgabe2.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="139" column="23" lean-forward="true" selection-start-line="139" selection-start-column="23" selection-end-line="139" selection-end-column="23" />
+            <state relative-caret-position="638">
+              <caret line="135" column="17" selection-start-line="135" selection-start-column="17" selection-end-line="135" selection-end-column="17" />
               <folding>
+                <element signature="n#!!block;n#draw#0" />
                 <element signature="n#!!block;n#drawClouds#0" />
                 <element signature="n#!!block;n#drawFlag#0" />
                 <element signature="n#!!block;n#drawStrichKlein#0" />
+                <element signature="n#!!block;n#drawStrichGross#0" />
                 <element signature="n#!!block;n#drawDreieck#0" />
+                <element signature="n#!!block;n#range#0" />
               </folding>
             </state>
           </provider>
@@ -228,11 +231,18 @@
       <option name="project" value="LOCAL" />
       <updated>1558373841880</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Fixed some code">
+      <created>1558375311159</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1558375311159</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12389000" />
+    <option name="totallyTimeSpent" value="13245000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="-157" width="1920" height="1057" extended-state="6" />
@@ -372,13 +382,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Aufgabe2/Aufgabe2.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="139" column="23" lean-forward="true" selection-start-line="139" selection-start-column="23" selection-end-line="139" selection-end-column="23" />
+        <state relative-caret-position="638">
+          <caret line="135" column="17" selection-start-line="135" selection-start-column="17" selection-end-line="135" selection-end-column="17" />
           <folding>
+            <element signature="n#!!block;n#draw#0" />
             <element signature="n#!!block;n#drawClouds#0" />
             <element signature="n#!!block;n#drawFlag#0" />
             <element signature="n#!!block;n#drawStrichKlein#0" />
+            <element signature="n#!!block;n#drawStrichGross#0" />
             <element signature="n#!!block;n#drawDreieck#0" />
+            <element signature="n#!!block;n#range#0" />
           </folding>
         </state>
       </provider>
