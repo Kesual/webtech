@@ -1,6 +1,7 @@
 // Begin
 
 window.addEventListener("load", function(){
+    "use strict";
 
     let rotate = document.getElementById("rotate");
     let flag = document.getElementById("flag");
@@ -10,26 +11,20 @@ window.addEventListener("load", function(){
     let maxWidth = canvas.getAttribute("width");
     let windrichtung = document.getElementById("richtung");
     let richtung = ["N", "NO", "O", "SO", "S", "SW", "W", "NW", "N"];
-
-    drawClouds();
-    drawOcean();
-    drawFlag(flag.value);
+    let waveArray = genArray();
+    let zeitBeimErstenAufruf = null;
+    let v = 50; // Geschwindigkeit Wolken
+    let verschiebung = 0;
+    let bool = true;
+    let verschArray;
 
     windrichtung.innerText = "-";
 
     rotate.addEventListener("input", function () {
 
-        let rotation = [0, 45, 90, 135, 180, 225, 270, 315, 360];
-
         if (flag.value !== "0") {
-            ctx.save();
-            ctx.clearRect(0, 0, maxWidth, maxHight);
-            draw();
-            ctx.translate(maxWidth / 2, maxHight / 2);
-            ctx.rotate(rotation[rotate.value] * Math.PI / 180);
-            ctx.translate(-maxWidth / 2, -maxHight / 2);
-            drawFlag(flag.value);
-            ctx.restore();
+
+            drawFlag(flag.value, rotate.value);
 
             windrichtung.innerText = richtung[rotate.value];
         } else {
@@ -39,11 +34,7 @@ window.addEventListener("load", function(){
 
     flag.addEventListener("input", function () {
 
-            ctx.save();
-            ctx.clearRect(0, 0, maxWidth, maxHight);
-            draw();
-            drawFlag(flag.value);
-            ctx.restore();
+        drawFlag(flag.value, rotate.value);
 
         if (flag.value !== "0") {
             windrichtung.innerText = richtung[rotate.value];
@@ -52,88 +43,135 @@ window.addEventListener("load", function(){
         }
     });
 
+    function repaint(zeitBeimAufruf) {
+
+        ctx.clearRect(0, 0, maxWidth, maxHight);
+
+        if (zeitBeimErstenAufruf === null)
+            zeitBeimErstenAufruf = zeitBeimAufruf; // wird nur beim ersten Aufruf ausgeführt
+
+        var zeitIntervallSeitErstemAufruf = zeitBeimAufruf - zeitBeimErstenAufruf;  // Millisekunden
+
+        var s = v * zeitIntervallSeitErstemAufruf / 1000.0;   // Weg in Pixel
+
+        if (s < 1110) {
+
+            draw(s - 175, 140);
+            verschArray = drawOcean(waveArray, verschiebung, bool);
+            bool = verschArray[0];
+            verschiebung = verschArray[1];
+
+            drawFlag(flag.value, rotate.value);
+
+        } else {
+            zeitBeimErstenAufruf = null;
+        }
+
+        window.requestAnimationFrame(repaint);
+    }
+
+    window.requestAnimationFrame(repaint);
+
 });
 
-function draw(){
+function draw(x, y) {
 
-    drawClouds();
-    drawOcean();
-
+    drawCloud(x, y);
+    drawCloud(x / 2, y - 70);
+    drawCloud( (x - 200) / 1.5, y - 40);
 }
 
-function drawClouds(){
+function drawCloud(startX, startY){
     let canvas = document.getElementById("einCanvas");
     let ctx = canvas.getContext("2d");
     ctx.strokeStyle = "#0000ff";
     ctx.lineWidth = 1;
 
-    //Cloud 1
     ctx.beginPath();
-    ctx.moveTo(70, 70);
-    ctx.bezierCurveTo(60,100,150,100,140, 70);
-    ctx.bezierCurveTo(160,80, 160,40, 140, 50);
-    ctx.bezierCurveTo(150, 10, 60, 10, 70, 50);
-    ctx.bezierCurveTo(60, 40, 40, 80 , 70,70);
+    ctx.moveTo(startX, startY); //70 + 70
+    ctx.bezierCurveTo(startX - 10,startY + 30,startX + 80,startY + 30,startX + 70, startY);
+    ctx.bezierCurveTo(startX + 90,startY + 10, startX + 90,startY - 30, startX + 80, startY - 20);
+    ctx.bezierCurveTo(startX + 80, startY - 60, startX - 10, startY - 60, startX, startY - 20);
+    ctx.bezierCurveTo(startX - 10, startY - 30, startX - 30, startY + 10 , startX, startY);
     ctx.closePath();
     ctx.fillStyle = "white";
     ctx.fill();
-    ctx.stroke();
-
-    //Cloud 2
-    ctx.beginPath();
-    ctx.moveTo(170, 120);
-    ctx.bezierCurveTo(160, 150, 250, 150, 240, 120);
-    ctx.bezierCurveTo(260, 130, 260, 90, 240, 100);
-    ctx.bezierCurveTo(250, 60, 160, 60, 170, 100);
-    ctx.bezierCurveTo(160, 90, 140, 130, 170,120);
-    ctx.closePath();
-    ctx.fillStyle = "white";
-    ctx.fill();
-    ctx.stroke();
-
-    //Cloud 3
-    ctx.beginPath();
-    ctx.moveTo(270, 70);
-    ctx.bezierCurveTo(260, 100, 350, 100, 340, 70);
-    ctx.bezierCurveTo(360, 80, 360, 40, 340, 50);
-    ctx.bezierCurveTo(350, 10, 260, 10, 270, 50);
-    ctx.bezierCurveTo(260, 40, 240, 80, 270,70);
-    ctx.closePath();
-    ctx.fillStyle = "white";
-    ctx.fill();
-    ctx.stroke();
-
-}
-
-function drawOcean(){
-    let canvas = document.getElementById("einCanvas");
-    let ctx = canvas.getContext("2d");
-    let numberArray = [];
-
-    ctx.beginPath();
-    ctx.moveTo(-50, 450);
-    ctx.bezierCurveTo(-50, 500 , 50, 500, range(50), 450);
-    ctx.bezierCurveTo(50, 500, 150, 500, range(150), 450);
-    ctx.bezierCurveTo(150, 500, 250, 500, range(250), 450);
-    ctx.bezierCurveTo(250, 500, 350, 500, range(350), 450);
-    ctx.bezierCurveTo(350, 500, 450, 500, range(450), 450);
-    ctx.bezierCurveTo(450, 500, 550, 500, range(550), 450);
-    ctx.lineTo(550, 650);
-    ctx.lineTo(-50, 650);
-    ctx.lineTo(-50, 450);
-    ctx.closePath();
-
-    ctx.fillStyle = "#2268d8";
-    ctx.fill();
-    ctx.lineWidth = 1;
-    ctx.strokeStyle = "#0000ff";
     ctx.stroke();
 }
 
-function drawFlag(type) {
+function drawOcean(array, shift, shiftBool){
+    let canvas = document.getElementById("einCanvas");
+    let ctx = canvas.getContext("2d");
+    let shiftArray = [];
+
+    if (shift === 50){
+        shiftBool = false;
+        shiftArray.push(shiftBool);
+    } else if (shift === -50){
+        shiftBool = true;
+        shiftArray.push(shiftBool);
+    } else {
+        shiftArray.push(shiftBool)
+    }
+
+    if (shiftBool) {
+        ctx.beginPath();
+        ctx.moveTo(-50 + shift, 450);
+        ctx.bezierCurveTo(-50 + shift, 500, 50 + shift, 500, array[0] + shift, 450);
+        ctx.bezierCurveTo(50 + shift, 500, 150 + shift, 500, array[1] + shift, 450);
+        ctx.bezierCurveTo(150 + shift, 500, 250 + shift, 500, array[2] + shift, 450);
+        ctx.bezierCurveTo(250 + shift, 500, 350 + shift, 500, array[3] + shift, 450);
+        ctx.bezierCurveTo(350 + shift, 500, 450 + shift, 500, array[4] + shift, 450);
+        ctx.bezierCurveTo(450 + shift, 500, 550 + shift, 500, array[5] + shift, 450);
+        ctx.bezierCurveTo(550 + shift, 500, 650 + shift, 500, array[6] + shift, 450);
+        ctx.lineTo(550 + shift, 650);
+        ctx.lineTo(-50 + shift, 650);
+        ctx.lineTo(-50 + shift, 450);
+        ctx.closePath();
+
+        ctx.fillStyle = "#2268d8";
+        ctx.fill();
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = "#0000ff";
+        ctx.stroke();
+
+        shift += 1;
+        shiftArray.push(shift);
+    } else if (!shiftBool) {
+        ctx.beginPath();
+        ctx.moveTo(-50 + shift, 450);
+        ctx.bezierCurveTo(-50 + shift, 500, 50 + shift, 500, array[0] + shift, 450);
+        ctx.bezierCurveTo(50 + shift, 500, 150 + shift, 500, array[1] + shift, 450);
+        ctx.bezierCurveTo(150 + shift, 500, 250 + shift, 500, array[2] + shift, 450);
+        ctx.bezierCurveTo(250 + shift, 500, 350 + shift, 500, array[3] + shift, 450);
+        ctx.bezierCurveTo(350 + shift, 500, 450 + shift, 500, array[4] + shift, 450);
+        ctx.bezierCurveTo(450 + shift, 500, 550 + shift, 500, array[5] + shift, 450);
+        ctx.bezierCurveTo(550 + shift, 500, 650 + shift, 500, array[6] + shift, 450);
+        ctx.lineTo(550 + shift, 650);
+        ctx.lineTo(-50 + shift, 650);
+        ctx.lineTo(-50 + shift, 450);
+        ctx.closePath();
+
+        ctx.fillStyle = "#2268d8";
+        ctx.fill();
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = "#0000ff";
+        ctx.stroke();
+
+        shift -= 1;
+        shiftArray.push(shift);
+    }
+
+    console.log(shiftBool + " " + shift);
+
+    return shiftArray;
+}
+
+function drawFlag(type, rotation) {
     let canvas = document.getElementById("einCanvas");
     let ctx = canvas.getContext("2d");
 
+    let rotateArray = [0, 45, 90, 135, 180, 225, 270, 315, 360];
     let maxHight = canvas.getAttribute("height");
     let maxWidth = canvas.getAttribute("width");
     var min = Math.min(maxWidth, maxHight);
@@ -157,6 +195,11 @@ function drawFlag(type) {
     } else {
 
         let drei, restdrei, zehn, restzehn, fuenf, i, abstand = 0;
+
+        ctx.save();
+        ctx.translate(maxWidth / 2, maxHight / 2);
+        ctx.rotate(rotateArray[rotation] * Math.PI / 180);
+        ctx.translate(-maxWidth / 2, -maxHight / 2); // Rotiert das Canvas
 
         ctx.lineWidth = 1;
         ctx.beginPath();
@@ -188,14 +231,12 @@ function drawFlag(type) {
             abstand +=20
         }
 
-        console.log("Anzahl 5er Fahnen: " + fuenf + "\n" +
-        "Anzahl 10er Fahnen: " + zehn + "\n" +
-        "Anzahl 50er Fahnen: " + drei);
-
         ctx.closePath();
         ctx.fillStyle = "black";
         ctx.fill();
         ctx.stroke();
+
+        ctx.restore();
 
     }
 }
@@ -262,6 +303,22 @@ function range (number){
     rand = Math.floor(Math.random() * 20);
 
     return (number - rand);
+}
+
+function genArray() {
+
+    let numberArray = [];
+    let number = 50;
+    let output;
+
+    for (let i = 0; i < 6; i++) {
+        output = range(number);
+        numberArray.push(output);
+        number += 100;
+    }
+
+    return numberArray;
+
 }
 
 
