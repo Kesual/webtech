@@ -11,13 +11,9 @@ window.addEventListener("load", function(){
     let maxWidth = canvas.getAttribute("width");
     let windrichtung = document.getElementById("richtung");
     let richtung = ["N", "NO", "O", "SO", "S", "SW", "W", "NW", "N"];
-    let rotation = [0, 45, 90, 135, 180, 225, 270, 315, 360];
     let waveArray = genArray();
     let zeitBeimErstenAufruf = null;
-    let v = 50;
-
-    draw(waveArray);
-    drawFlag(flag.value);
+    let v = 50; // Geschwindigkeit Wolken
 
     windrichtung.innerText = "-";
 
@@ -25,14 +21,7 @@ window.addEventListener("load", function(){
 
         if (flag.value !== "0") {
 
-            ctx.save();
-            ctx.clearRect(0, 0, maxWidth, maxHight);
-            draw(waveArray);
-            ctx.translate(maxWidth / 2, maxHight / 2);
-            ctx.rotate(rotation[rotate.value] * Math.PI / 180);
-            ctx.translate(-maxWidth / 2, -maxHight / 2);
-            drawFlag(flag.value);
-            ctx.restore();
+            drawFlag(flag.value, rotate.value);
 
             windrichtung.innerText = richtung[rotate.value];
         } else {
@@ -42,14 +31,7 @@ window.addEventListener("load", function(){
 
     flag.addEventListener("input", function () {
 
-        ctx.save();
-        ctx.clearRect(0, 0, maxWidth, maxHight);
-        draw(waveArray);
-        ctx.translate(maxWidth / 2, maxHight / 2);
-        ctx.rotate(rotation[rotate.value] * Math.PI / 180);
-        ctx.translate(-maxWidth / 2, -maxHight / 2);
-        drawFlag(flag.value);
-        ctx.restore();
+        drawFlag(flag.value, rotate.value);
 
         if (flag.value !== "0") {
             windrichtung.innerText = richtung[rotate.value];
@@ -67,11 +49,14 @@ window.addEventListener("load", function(){
 
         var zeitIntervallSeitErstemAufruf = zeitBeimAufruf - zeitBeimErstenAufruf;  // Millisekunden
 
-        var s = v * zeitIntervallSeitErstemAufruf/1000.0;   // Weg in Pixel
+        var s = v * zeitIntervallSeitErstemAufruf / 1000.0;   // Weg in Pixel
 
-        if (s / 4 < 600) {
+        if (s < 1110) {
 
-            draw(waveArray, s - 400, 140)
+            console.log(s);
+
+            draw(waveArray, s - 175, 140);
+            drawFlag(flag.value, rotate.value);
 
         } else {
             zeitBeimErstenAufruf = null;
@@ -135,10 +120,11 @@ function drawOcean(array){
     ctx.stroke();
 }
 
-function drawFlag(type) {
+function drawFlag(type, rotation) {
     let canvas = document.getElementById("einCanvas");
     let ctx = canvas.getContext("2d");
 
+    let rotateArray = [0, 45, 90, 135, 180, 225, 270, 315, 360];
     let maxHight = canvas.getAttribute("height");
     let maxWidth = canvas.getAttribute("width");
     var min = Math.min(maxWidth, maxHight);
@@ -162,6 +148,11 @@ function drawFlag(type) {
     } else {
 
         let drei, restdrei, zehn, restzehn, fuenf, i, abstand = 0;
+
+        ctx.save();
+        ctx.translate(maxWidth / 2, maxHight / 2);
+        ctx.rotate(rotateArray[rotation] * Math.PI / 180);
+        ctx.translate(-maxWidth / 2, -maxHight / 2); // Rotiert das Canvas
 
         ctx.lineWidth = 1;
         ctx.beginPath();
@@ -197,6 +188,8 @@ function drawFlag(type) {
         ctx.fillStyle = "black";
         ctx.fill();
         ctx.stroke();
+
+        ctx.restore();
 
     }
 }
