@@ -14,6 +14,9 @@ window.addEventListener("load", function(){
     let waveArray = genArray();
     let zeitBeimErstenAufruf = null;
     let v = 50; // Geschwindigkeit Wolken
+    let verschiebung = 0;
+    let bool = true;
+    let verschArray;
 
     windrichtung.innerText = "-";
 
@@ -53,9 +56,11 @@ window.addEventListener("load", function(){
 
         if (s < 1110) {
 
-            console.log(s);
+            draw(s - 175, 140);
+            verschArray = drawOcean(waveArray, verschiebung, bool);
+            bool = verschArray[0];
+            verschiebung = verschArray[1];
 
-            draw(waveArray, s - 175, 140);
             drawFlag(flag.value, rotate.value);
 
         } else {
@@ -69,9 +74,8 @@ window.addEventListener("load", function(){
 
 });
 
-function draw(oceanArray, x, y) {
+function draw(x, y) {
 
-    drawOcean(oceanArray);
     drawCloud(x, y);
     drawCloud(x / 2, y - 70);
     drawCloud( (x - 200) / 1.5, y - 40);
@@ -83,7 +87,6 @@ function drawCloud(startX, startY){
     ctx.strokeStyle = "#0000ff";
     ctx.lineWidth = 1;
 
-    //Cloud 1
     ctx.beginPath();
     ctx.moveTo(startX, startY); //70 + 70
     ctx.bezierCurveTo(startX - 10,startY + 30,startX + 80,startY + 30,startX + 70, startY);
@@ -96,28 +99,72 @@ function drawCloud(startX, startY){
     ctx.stroke();
 }
 
-function drawOcean(array){
+function drawOcean(array, shift, shiftBool){
     let canvas = document.getElementById("einCanvas");
     let ctx = canvas.getContext("2d");
+    let shiftArray = [];
 
-    ctx.beginPath();
-    ctx.moveTo(-50, 450);
-    ctx.bezierCurveTo(-50, 500 , 50, 500, array[0], 450);
-    ctx.bezierCurveTo(50, 500, 150, 500, array[1], 450);
-    ctx.bezierCurveTo(150, 500, 250, 500, array[2], 450);
-    ctx.bezierCurveTo(250, 500, 350, 500, array[3], 450);
-    ctx.bezierCurveTo(350, 500, 450, 500, array[4], 450);
-    ctx.bezierCurveTo(450, 500, 550, 500, array[5], 450);
-    ctx.lineTo(550, 650);
-    ctx.lineTo(-50, 650);
-    ctx.lineTo(-50, 450);
-    ctx.closePath();
+    if (shift === 50){
+        shiftBool = false;
+        shiftArray.push(shiftBool);
+    } else if (shift === -50){
+        shiftBool = true;
+        shiftArray.push(shiftBool);
+    } else {
+        shiftArray.push(shiftBool)
+    }
 
-    ctx.fillStyle = "#2268d8";
-    ctx.fill();
-    ctx.lineWidth = 1;
-    ctx.strokeStyle = "#0000ff";
-    ctx.stroke();
+    if (shiftBool) {
+        ctx.beginPath();
+        ctx.moveTo(-50 + shift, 450);
+        ctx.bezierCurveTo(-50 + shift, 500, 50 + shift, 500, array[0] + shift, 450);
+        ctx.bezierCurveTo(50 + shift, 500, 150 + shift, 500, array[1] + shift, 450);
+        ctx.bezierCurveTo(150 + shift, 500, 250 + shift, 500, array[2] + shift, 450);
+        ctx.bezierCurveTo(250 + shift, 500, 350 + shift, 500, array[3] + shift, 450);
+        ctx.bezierCurveTo(350 + shift, 500, 450 + shift, 500, array[4] + shift, 450);
+        ctx.bezierCurveTo(450 + shift, 500, 550 + shift, 500, array[5] + shift, 450);
+        ctx.bezierCurveTo(550 + shift, 500, 650 + shift, 500, array[6] + shift, 450);
+        ctx.lineTo(550 + shift, 650);
+        ctx.lineTo(-50 + shift, 650);
+        ctx.lineTo(-50 + shift, 450);
+        ctx.closePath();
+
+        ctx.fillStyle = "#2268d8";
+        ctx.fill();
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = "#0000ff";
+        ctx.stroke();
+
+        shift += 1;
+        shiftArray.push(shift);
+    } else if (!shiftBool) {
+        ctx.beginPath();
+        ctx.moveTo(-50 + shift, 450);
+        ctx.bezierCurveTo(-50 + shift, 500, 50 + shift, 500, array[0] + shift, 450);
+        ctx.bezierCurveTo(50 + shift, 500, 150 + shift, 500, array[1] + shift, 450);
+        ctx.bezierCurveTo(150 + shift, 500, 250 + shift, 500, array[2] + shift, 450);
+        ctx.bezierCurveTo(250 + shift, 500, 350 + shift, 500, array[3] + shift, 450);
+        ctx.bezierCurveTo(350 + shift, 500, 450 + shift, 500, array[4] + shift, 450);
+        ctx.bezierCurveTo(450 + shift, 500, 550 + shift, 500, array[5] + shift, 450);
+        ctx.bezierCurveTo(550 + shift, 500, 650 + shift, 500, array[6] + shift, 450);
+        ctx.lineTo(550 + shift, 650);
+        ctx.lineTo(-50 + shift, 650);
+        ctx.lineTo(-50 + shift, 450);
+        ctx.closePath();
+
+        ctx.fillStyle = "#2268d8";
+        ctx.fill();
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = "#0000ff";
+        ctx.stroke();
+
+        shift -= 1;
+        shiftArray.push(shift);
+    }
+
+    console.log(shiftBool + " " + shift);
+
+    return shiftArray;
 }
 
 function drawFlag(type, rotation) {
@@ -264,7 +311,7 @@ function genArray() {
     let number = 50;
     let output;
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 6; i++) {
         output = range(number);
         numberArray.push(output);
         number += 100;

@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="22bba79f-9a63-4075-90c7-40b973ab1420" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Aufgabe2/Aufgabe2.js" beforeDir="false" afterPath="$PROJECT_DIR$/Aufgabe2/Aufgabe2.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,10 +39,15 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Aufgabe2/Aufgabe2.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="101" selection-start-line="101" selection-end-line="101" />
+            <state relative-caret-position="30">
+              <caret line="2" column="42" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
               <folding>
+                <element signature="e#52#1908#0" />
+                <element signature="e#692#914#0" />
+                <element signature="e#965#1182#0" />
                 <element signature="n#!!block;n#draw#0" />
+                <element signature="n#!!block;n#drawCloud#0" />
+                <element signature="n#!!block;n#drawOcean#0" />
                 <element signature="n#!!block;n#drawFlag#0" />
                 <element signature="n#!!block;n#drawStrichKlein#0" />
                 <element signature="n#!!block;n#drawStrichGross#0" />
@@ -65,8 +71,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../Dokumente/Uni/Studium Flensburg/HS/Webtechnologien/WTÜbung 02.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2910">
-              <caret line="194" column="5" selection-start-line="194" selection-start-column="4" selection-end-line="194" selection-end-column="5" />
+            <state relative-caret-position="348">
+              <caret line="202" column="24" lean-forward="true" selection-start-line="202" selection-start-column="24" selection-end-line="202" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -122,7 +128,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -139,6 +144,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -181,6 +187,7 @@
       <workItem from="1558539802660" duration="11241000" />
       <workItem from="1558554214028" duration="15000" />
       <workItem from="1558554233635" duration="10000" />
+      <workItem from="1558554566122" duration="3367000" />
     </task>
     <task id="LOCAL-00001" summary="Thats fine">
       <created>1558113458074</created>
@@ -298,13 +305,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24661000" />
+    <option name="totallyTimeSpent" value="28028000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="819" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15736766" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1595136" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -325,6 +332,28 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" weight="0.3297568" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1595136" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32737276" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.3287483" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.3287483" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" weight="0.3297568" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -431,13 +460,6 @@
     <entry file="file://$PROJECT_DIR$/Aufgabe4/WebTecUe04.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Aufgabe2/Aufgabe2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="15" selection-start-column="15" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../Dokumente/Uni/Studium Flensburg/HS/Webtechnologien/jumboPublicTepperWebtechnologien/Webtechnologien/V02/requestAnimationFrameDemo.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
@@ -447,17 +469,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../../Dokumente/Uni/Studium Flensburg/HS/Webtechnologien/WTÜbung 02.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2910">
-          <caret line="194" column="5" selection-start-line="194" selection-start-column="4" selection-end-line="194" selection-end-column="5" />
+        <state relative-caret-position="348">
+          <caret line="202" column="24" lean-forward="true" selection-start-line="202" selection-start-column="24" selection-end-line="202" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Aufgabe2/Aufgabe2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="15" selection-start-column="15" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Aufgabe2/Aufgabe2.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="101" selection-start-line="101" selection-end-line="101" />
+        <state relative-caret-position="30">
+          <caret line="2" column="42" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
           <folding>
+            <element signature="e#52#1908#0" />
+            <element signature="e#692#914#0" />
+            <element signature="e#965#1182#0" />
             <element signature="n#!!block;n#draw#0" />
+            <element signature="n#!!block;n#drawCloud#0" />
+            <element signature="n#!!block;n#drawOcean#0" />
             <element signature="n#!!block;n#drawFlag#0" />
             <element signature="n#!!block;n#drawStrichKlein#0" />
             <element signature="n#!!block;n#drawStrichGross#0" />
