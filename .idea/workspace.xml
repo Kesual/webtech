@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="22bba79f-9a63-4075-90c7-40b973ab1420" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Aufgabe2/Aufgabe2.js" beforeDir="false" afterPath="$PROJECT_DIR$/Aufgabe2/Aufgabe2.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -187,7 +186,7 @@
       <workItem from="1558539802660" duration="11241000" />
       <workItem from="1558554214028" duration="15000" />
       <workItem from="1558554233635" duration="10000" />
-      <workItem from="1558554566122" duration="3367000" />
+      <workItem from="1558554566122" duration="3394000" />
     </task>
     <task id="LOCAL-00001" summary="Thats fine">
       <created>1558113458074</created>
@@ -301,11 +300,18 @@
       <option name="project" value="LOCAL" />
       <updated>1558553802211</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Code OK ready to merge">
+      <created>1558558122825</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1558558122825</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28028000" />
+    <option name="totallyTimeSpent" value="28055000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="819" extended-state="0" />
@@ -405,7 +411,8 @@
     <MESSAGE value="Changes" />
     <MESSAGE value="Fixed Wave reload prob" />
     <MESSAGE value="Fixed some code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed some code" />
+    <MESSAGE value="Code OK ready to merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code OK ready to merge" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Aufgabe1/Aufgabe1.html">
