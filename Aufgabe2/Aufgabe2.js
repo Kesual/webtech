@@ -1,6 +1,7 @@
 // Begin
 
 window.addEventListener("load", function(){
+    "use strict";
 
     let rotate = document.getElementById("rotate");
     let flag = document.getElementById("flag");
@@ -10,27 +11,23 @@ window.addEventListener("load", function(){
     let maxWidth = canvas.getAttribute("width");
     let windrichtung = document.getElementById("richtung");
     let richtung = ["N", "NO", "O", "SO", "S", "SW", "W", "NW", "N"];
+    let rotation = [0, 45, 90, 135, 180, 225, 270, 315, 360];
     let waveArray = genArray();
+    let zeitBeimErstenAufruf = null;
+    let v = 50;
 
-    for (let u = 0; u < waveArray.length; u++){
-        console.log(waveArray[u]);
-    }
-
-    drawClouds();
-    drawOcean(waveArray);
+    draw(waveArray);
     drawFlag(flag.value);
 
     windrichtung.innerText = "-";
 
     rotate.addEventListener("input", function () {
 
-        let rotation = [0, 45, 90, 135, 180, 225, 270, 315, 360];
-
         if (flag.value !== "0") {
+
             ctx.save();
             ctx.clearRect(0, 0, maxWidth, maxHight);
-            drawClouds();
-            drawOcean(waveArray);
+            draw(waveArray);
             ctx.translate(maxWidth / 2, maxHight / 2);
             ctx.rotate(rotation[rotate.value] * Math.PI / 180);
             ctx.translate(-maxWidth / 2, -maxHight / 2);
@@ -47,8 +44,10 @@ window.addEventListener("load", function(){
 
         ctx.save();
         ctx.clearRect(0, 0, maxWidth, maxHight);
-        drawClouds();
-        drawOcean(waveArray);
+        draw(waveArray);
+        ctx.translate(maxWidth / 2, maxHight / 2);
+        ctx.rotate(rotation[rotate.value] * Math.PI / 180);
+        ctx.translate(-maxWidth / 2, -maxHight / 2);
         drawFlag(flag.value);
         ctx.restore();
 
@@ -59,9 +58,41 @@ window.addEventListener("load", function(){
         }
     });
 
+    function repaint(zeitBeimAufruf) {
+
+        ctx.clearRect(0, 0, maxWidth, maxHight);
+
+        if (zeitBeimErstenAufruf === null)
+            zeitBeimErstenAufruf = zeitBeimAufruf; // wird nur beim ersten Aufruf ausgeführt
+
+        var zeitIntervallSeitErstemAufruf = zeitBeimAufruf - zeitBeimErstenAufruf;  // Millisekunden
+
+        var s = v * zeitIntervallSeitErstemAufruf/1000.0;   // Weg in Pixel
+
+        if (s / 4 < 600) {
+
+            draw(waveArray, s - 400, 140)
+
+        } else {
+            zeitBeimErstenAufruf = null;
+        }
+
+        window.requestAnimationFrame(repaint);
+    }
+
+    window.requestAnimationFrame(repaint);
+
 });
 
-function drawClouds(){
+function draw(oceanArray, x, y) {
+
+    drawOcean(oceanArray);
+    drawCloud(x, y);
+    drawCloud(x / 2, y - 70);
+    drawCloud( (x - 200) / 1.5, y - 40);
+}
+
+function drawCloud(startX, startY){
     let canvas = document.getElementById("einCanvas");
     let ctx = canvas.getContext("2d");
     ctx.strokeStyle = "#0000ff";
@@ -69,40 +100,15 @@ function drawClouds(){
 
     //Cloud 1
     ctx.beginPath();
-    ctx.moveTo(70, 70);
-    ctx.bezierCurveTo(60,100,150,100,140, 70);
-    ctx.bezierCurveTo(160,80, 160,40, 140, 50);
-    ctx.bezierCurveTo(150, 10, 60, 10, 70, 50);
-    ctx.bezierCurveTo(60, 40, 40, 80 , 70,70);
+    ctx.moveTo(startX, startY); //70 + 70
+    ctx.bezierCurveTo(startX - 10,startY + 30,startX + 80,startY + 30,startX + 70, startY);
+    ctx.bezierCurveTo(startX + 90,startY + 10, startX + 90,startY - 30, startX + 80, startY - 20);
+    ctx.bezierCurveTo(startX + 80, startY - 60, startX - 10, startY - 60, startX, startY - 20);
+    ctx.bezierCurveTo(startX - 10, startY - 30, startX - 30, startY + 10 , startX, startY);
     ctx.closePath();
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.stroke();
-
-    //Cloud 2
-    ctx.beginPath();
-    ctx.moveTo(170, 120);
-    ctx.bezierCurveTo(160, 150, 250, 150, 240, 120);
-    ctx.bezierCurveTo(260, 130, 260, 90, 240, 100);
-    ctx.bezierCurveTo(250, 60, 160, 60, 170, 100);
-    ctx.bezierCurveTo(160, 90, 140, 130, 170,120);
-    ctx.closePath();
-    ctx.fillStyle = "white";
-    ctx.fill();
-    ctx.stroke();
-
-    //Cloud 3
-    ctx.beginPath();
-    ctx.moveTo(270, 70);
-    ctx.bezierCurveTo(260, 100, 350, 100, 340, 70);
-    ctx.bezierCurveTo(360, 80, 360, 40, 340, 50);
-    ctx.bezierCurveTo(350, 10, 260, 10, 270, 50);
-    ctx.bezierCurveTo(260, 40, 240, 80, 270,70);
-    ctx.closePath();
-    ctx.fillStyle = "white";
-    ctx.fill();
-    ctx.stroke();
-
 }
 
 function drawOcean(array){
@@ -186,10 +192,6 @@ function drawFlag(type) {
             ctx = drawStrichKlein(ctx, abstand);
             abstand +=20
         }
-
-        console.log("Anzahl 5er Fahnen: " + fuenf + "\n" +
-        "Anzahl 10er Fahnen: " + zehn + "\n" +
-        "Anzahl 50er Fahnen: " + drei);
 
         ctx.closePath();
         ctx.fillStyle = "black";
