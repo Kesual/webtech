@@ -48,11 +48,11 @@ window.addEventListener("load", function(){
         ctx.clearRect(0, 0, maxWidth, maxHight);
 
         if (zeitBeimErstenAufruf === null)
-            zeitBeimErstenAufruf = zeitBeimAufruf; // wird nur beim ersten Aufruf ausgeführt
+            zeitBeimErstenAufruf = zeitBeimAufruf;
 
-        var zeitIntervallSeitErstemAufruf = zeitBeimAufruf - zeitBeimErstenAufruf;  // Millisekunden
+        var zeitIntervallSeitErstemAufruf = zeitBeimAufruf - zeitBeimErstenAufruf;
 
-        var s = v * zeitIntervallSeitErstemAufruf / 1000.0;   // Weg in Pixel
+        var s = v * zeitIntervallSeitErstemAufruf / 1000.0;
 
         if (s < 1110) {
 
