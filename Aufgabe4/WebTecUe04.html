@@ -14,11 +14,11 @@
             background-color: white;
         }
     </style>
-    <script>
-
+    <script type='text/javascript'>
+        "use strict";
         window.addEventListener("load", function () {
 
-            let button1, button2, zeilen, spalten, div1, div2;
+            let button1, button2, zeilen, spalten, div1, div2, valueZ, valueS;
 
             addInputField();
             addButtons();
@@ -48,17 +48,21 @@
 
                 while(div1.firstChild){
                     div1.removeChild(div1.firstChild);
-
                 }
                 while(div2.firstChild){
                     div2.removeChild(div2.firstChild);
-
                 }
 
                 setStartButton();
 
+                let startB = document.getElementById("button3");
                 
-
+                startB.addEventListener("click", function(){
+        
+                    let game = new Field(zeilen, spalten);
+                    game.setField();
+        
+                });
             });
             
         });
@@ -148,20 +152,46 @@
             div1 = document.getElementById("div1");
 
             start.innerText = "Start";
-            start.setAttribute("id", "button1");
+            start.setAttribute("id", "button3");
 
             div1.appendChild(start);
 
         }
 
-        function Field(div, zeilen, spalten) {
-
-            this.zeilen = zeilen;
-            this.spalten = spalten;
+        function Field(zeilen, spalten) {
+            
+            let mainDiv = document.getElementById("div2");
             this.setField = function () {
+                let table, tBody, tableElem, numb = 0, currTable;
+               
+                table = document.createElement("TABLE");
+                table.setAttribute("id", "table");
+                mainDiv.appendChild(table);
                 
-            }
-
+                table = document.getElementById("table");
+                tBody = document.createElement("TBODY");
+                tBody.setAttribute("id", "tBody");
+                table.appendChild(tBody);
+                
+                tBody = document.getElementById("tBody");
+                
+                for (let i = 0; i < zeilen; i++){
+                    
+                    let tabelleZeile = document.createElement("TR");
+                    tabelleZeile.setAttribute("id", "zeile" + numb);
+                    tBody.appendChild(tabelleZeile);
+                    
+                    for (let j = 0; j < spalten; j++){
+                        
+                        currTable = document.getElementById("zeile" + numb);
+                        let tabelleSpalte = document.createElement("TD");
+                        currTable.appendChild(tabelleSpalte);
+                        
+                    }
+                    numb += 1;
+                }
+                
+            };
         }
         
         function HoppsButton() {
@@ -171,17 +201,5 @@
     </script>
 </head>
 <body>
-
-<table>
-    <tr>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-    </tr>
-</table>
-
 </body>
 </html>
