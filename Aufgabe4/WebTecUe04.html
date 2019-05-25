@@ -187,6 +187,7 @@
                         
                         currTable = document.getElementById("zeile" + numb);
                         let tabelleSpalte = document.createElement("TD");
+                        tabelleSpalte.setAttribute("name", "spalte");
                         currTable.appendChild(tabelleSpalte);
                         
                     }
@@ -202,15 +203,24 @@
 
             this.start = function () {
 
+                let genNumber, table, button;
 
+                genNumber = this.rand();
 
+                table = document.getElementsByName("spalte");
+
+                button = document.createElement("BUTTON");
+                button.style.height = "30px";
+                button.innerText = "X";
+
+                table[genNumber].appendChild(button);
             };
 
             this.rand = function () {
 
                 let random, max = ((this.Field.spalten) * (this.Field.zeilen));
 
-                random = Math.round(Math.random() * (max - 1)) + 1;
+                random = Math.round(Math.random() * (max - 1));
                 return random;
 
             }
