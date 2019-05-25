@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="22bba79f-9a63-4075-90c7-40b973ab1420" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Aufgabe4/WebTecUe04.html" beforeDir="false" afterPath="$PROJECT_DIR$/Aufgabe4/WebTecUe04.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Aufgabe4/WebTecUe04.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="209" column="61" selection-start-line="209" selection-start-column="61" selection-end-line="209" selection-end-column="61" />
+            <state relative-caret-position="440">
+              <caret line="212" column="40" selection-start-line="212" selection-start-column="40" selection-end-line="212" selection-end-column="40" />
               <folding>
                 <element signature="e#901#1117#0" />
                 <element signature="e#1943#3571#0" />
@@ -149,7 +148,7 @@
       <workItem from="1558558311048" duration="107000" />
       <workItem from="1558610303229" duration="2319000" />
       <workItem from="1558631992483" duration="134000" />
-      <workItem from="1558796699898" duration="4260000" />
+      <workItem from="1558796699898" duration="4501000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed some code">
       <created>1558614024767</created>
@@ -172,12 +171,12 @@
       <option name="project" value="LOCAL" />
       <updated>1558800623521</updated>
     </task>
-    <task id="LOCAL-00004" summary="Changes">
-      <created>1558116883133</created>
+    <task id="LOCAL-00004" summary="Added some Code">
+      <created>1558801467929</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1558116883133</updated>
+      <updated>1558801467929</updated>
     </task>
     <task id="LOCAL-00005" summary="Changes">
       <created>1558118627741</created>
@@ -270,11 +269,11 @@
       <option name="project" value="LOCAL" />
       <updated>1558558122825</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6372000" />
+    <option name="totallyTimeSpent" value="6613000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="819" extended-state="6" />
@@ -435,8 +434,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Aufgabe4/WebTecUe04.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="209" column="61" selection-start-line="209" selection-start-column="61" selection-end-line="209" selection-end-column="61" />
+        <state relative-caret-position="440">
+          <caret line="212" column="40" selection-start-line="212" selection-start-column="40" selection-end-line="212" selection-end-column="40" />
           <folding>
             <element signature="e#901#1117#0" />
             <element signature="e#1943#3571#0" />
