@@ -16,9 +16,10 @@
     </style>
     <script type='text/javascript'>
         "use strict";
+
         window.addEventListener("load", function () {
 
-            let button1, button2, zeilen, spalten, div1, div2, valueZ, valueS;
+            let button1, button2, zeilen, spalten, div1, div2, geschwindigkeit = 500;
 
             addInputField();
             addButtons();
@@ -34,8 +35,10 @@
 
                 if (button1.innerText === "langsam"){
                     button1.innerText = "schnell";
+                    geschwindigkeit = 2000;
                 } else {
                     button1.innerText = "langsam";
+                    geschwindigkeit = 500;
                 }
 
             });
@@ -49,16 +52,20 @@
                 while(div1.firstChild){ div1.removeChild(div1.firstChild); }
                 while(div2.firstChild){ div2.removeChild(div2.firstChild); }
 
-                let game = new Field("div2", zeilen, spalten);
+                let button = new Button();
+
+                let game = new Field(div2, zeilen, spalten, button);
                 game.setField();
 
                 setStartButton();
 
+                let hopps = new HoppsButtonGame(game, geschwindigkeit);
+
                 let startB = document.getElementById("button3");
                 startB.addEventListener("click", function (){
 
-                    let hopps = new HoppsButtonGame(game);
-                    hopps.start();
+                    game.setNull();
+                    hopps.play();
 
                 }); // Start-Button
 
@@ -157,18 +164,21 @@
 
         }
 
-        function Field(div, zeilen, spalten) {
-            
-            this.mainDiv = document.getElementById(div);
+        function Field(div, zeilen, spalten, button) {
+
+            let score = 0, count;
+
+            this.mainDiv = div;
             this.zeilen = zeilen;
             this.spalten = spalten;
+            this.Button = button;
 
             this.setField = function () {
-                let table, tBody, tableElem, numb = 0, currTable;
+                let table, tBody, numb = 0, currTable, counter;
                
                 table = document.createElement("TABLE");
                 table.setAttribute("id", "table");
-                this.mainDiv.appendChild(table);
+                div.appendChild(table);
                 
                 table = document.getElementById("table");
                 tBody = document.createElement("TBODY");
@@ -177,13 +187,13 @@
                 
                 tBody = document.getElementById("tBody");
                 
-                for (let i = 0; i < this.zeilen; i++){
+                for (let i = 0; i < zeilen; i++){
                     
                     let tabelleZeile = document.createElement("TR");
                     tabelleZeile.setAttribute("id", "zeile" + numb);
                     tBody.appendChild(tabelleZeile);
                     
-                    for (let j = 0; j < this.spalten; j++){
+                    for (let j = 0; j < spalten; j++){
                         
                         currTable = document.getElementById("zeile" + numb);
                         let tabelleSpalte = document.createElement("TD");
@@ -193,38 +203,109 @@
                     }
                     numb += 1;
                 }
-                
+
+                counter = document.createElement("P");
+                counter.innerText = score;
+                counter.style.textAlign = "center";
+                counter.style.marginLeft = "49%";
+                counter.style.marginRight = "49%";
+                counter.style.border = "1px solid black";
+                counter.setAttribute("id", "counter");
+                document.body.append(counter);
+
+                count = document.getElementById("counter");
             };
+
+            this.manButton = function () {
+
+                score += 1;
+                count.innerText = score;
+                button.doSth();
+
+            };
+
+            this.setNull = function () {
+                score = 0;
+                count.innerText = score;
+            };
+
         }
-        
-        function HoppsButtonGame(Field) {
 
-            this.Field = Field;
+        function Button() {
 
-            this.start = function () {
+            let button;
 
-                let genNumber, table, button;
-
-                genNumber = this.rand();
-
-                table = document.getElementsByName("spalte");
-
+            this.getButton = function () {
                 button = document.createElement("BUTTON");
+                button.setAttribute("name", "hoppsButton");
                 button.style.height = "30px";
                 button.innerText = "X";
 
-                table[genNumber].appendChild(button);
+                return button;
             };
 
-            this.rand = function () {
+            this.doSth = function () {
 
-                let random, max = ((this.Field.spalten) * (this.Field.zeilen));
+                paintRed();
+                setTimeout(paintDefault, 100);
+
+            };
+
+            function paintRed() {
+                button.style.backgroundColor = "red";
+            }
+
+            function paintDefault() {
+                button.style.backgroundColor = "white";
+            }
+
+        }
+        
+        function HoppsButtonGame(Field, v) {
+
+            let curTable, secBegin, secCurr, gameTime = 15,
+                buttonID = document.getElementsByName("hoppsButton"),
+                genNumber, table = document.getElementsByName("spalte");
+
+            this.play = function () {
+                secBegin = Date.now() / 1000;
+                start();
+            };
+
+            function start() {
+
+                secCurr = Date.now() / 1000;
+
+                if ((secBegin + gameTime) >= secCurr){
+
+                    setButton();
+                    setTimeout(removeButton, v);
+
+                    setTimeout(start, v);
+                }
+            }
+
+            function setButton() {
+
+                genNumber = rand();
+                table[genNumber].appendChild(Field.Button.getButton());
+                buttonID[0].addEventListener("click", Field.manButton );
+                curTable = table[genNumber];
+
+            }
+
+            function removeButton () {
+                curTable.removeChild(curTable.firstChild);
+            }
+
+            function rand () {
+
+                let random, max = ((Field.spalten) * (Field.zeilen));
 
                 random = Math.round(Math.random() * (max - 1));
                 return random;
 
             }
-
         }
         
     </script>

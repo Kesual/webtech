@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="22bba79f-9a63-4075-90c7-40b973ab1420" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Aufgabe4/WebTecUe04.html" beforeDir="false" afterPath="$PROJECT_DIR$/Aufgabe4/WebTecUe04.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -10,19 +11,33 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Aufgabe4/WebTecUe04.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="212" column="40" selection-start-line="212" selection-start-column="40" selection-end-line="212" selection-end-column="40" />
+            <state relative-caret-position="633">
+              <caret line="228" column="40" selection-start-line="228" selection-start-column="40" selection-end-line="228" selection-end-column="40" />
               <folding>
                 <element signature="e#901#1117#0" />
-                <element signature="e#1943#3571#0" />
-                <element signature="e#3603#4467#0" />
-                <element signature="e#4503#4780#0" />
-                <element signature="e#6553#6782#0" />
+                <element signature="e#1981#3609#0" />
+                <element signature="e#3641#4505#0" />
+                <element signature="e#4541#4818#0" />
+                <element signature="e#5048#6388#0" />
+                <element signature="e#6396#6420#0" />
+                <element signature="e#6457#6489#0" />
+                <element signature="e#6865#6897#0" />
+                <element signature="e#6957#7030#0" />
+                <element signature="e#8167#9876#0" />
+                <element signature="e#6853#6967#0" />
+                <element signature="e#7017#7353#0" />
+                <element signature="e#7255#7339#0" />
+                <element signature="e#6929#7122#0" />
               </folding>
             </state>
           </provider>
@@ -62,9 +77,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="819" />
+    <option name="x" value="1440" />
+    <option name="y" value="-157" />
+    <option name="width" value="1920" />
+    <option name="height" value="999" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -74,6 +90,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -105,10 +122,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RunDashboard">
@@ -149,6 +166,9 @@
       <workItem from="1558610303229" duration="2319000" />
       <workItem from="1558631992483" duration="134000" />
       <workItem from="1558796699898" duration="4501000" />
+      <workItem from="1558876332445" duration="50000" />
+      <workItem from="1558876426433" duration="18000" />
+      <workItem from="1558876489738" duration="18965000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed some code">
       <created>1558614024767</created>
@@ -273,13 +293,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6613000" />
+    <option name="totallyTimeSpent" value="25646000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="819" extended-state="6" />
+    <frame x="1440" y="-157" width="1920" height="1057" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16809729" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12886049" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -291,7 +311,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32737276" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32642487" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.3287483" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.3287483" />
@@ -432,16 +452,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Aufgabe1/ReloadSthWButton.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/Aufgabe4/WebTecUe04.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="212" column="40" selection-start-line="212" selection-start-column="40" selection-end-line="212" selection-end-column="40" />
+        <state relative-caret-position="633">
+          <caret line="228" column="40" selection-start-line="228" selection-start-column="40" selection-end-line="228" selection-end-column="40" />
           <folding>
             <element signature="e#901#1117#0" />
-            <element signature="e#1943#3571#0" />
-            <element signature="e#3603#4467#0" />
-            <element signature="e#4503#4780#0" />
-            <element signature="e#6553#6782#0" />
+            <element signature="e#1981#3609#0" />
+            <element signature="e#3641#4505#0" />
+            <element signature="e#4541#4818#0" />
+            <element signature="e#5048#6388#0" />
+            <element signature="e#6396#6420#0" />
+            <element signature="e#6457#6489#0" />
+            <element signature="e#6865#6897#0" />
+            <element signature="e#6957#7030#0" />
+            <element signature="e#8167#9876#0" />
+            <element signature="e#6853#6967#0" />
+            <element signature="e#7017#7353#0" />
+            <element signature="e#7255#7339#0" />
+            <element signature="e#6929#7122#0" />
           </folding>
         </state>
       </provider>
