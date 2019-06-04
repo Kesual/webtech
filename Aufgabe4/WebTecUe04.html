@@ -216,12 +216,16 @@
                 count = document.getElementById("counter");
             };
 
-            this.manButton = function () {
+            this.manButton = function (ok) {
 
-                score += 1;
-                count.innerText = score;
-                button.doSth();
+                if (ok) {
+                    score += 1;
+                    count.innerText = score;
+                    button.doSth();
+                    ok = false;
+                }
 
+                return ok;
             };
 
             this.setNull = function () {
@@ -265,7 +269,8 @@
 
             let curTable, secBegin, secCurr, gameTime = 15,
                 buttonID = document.getElementsByName("hoppsButton"),
-                genNumber, table = document.getElementsByName("spalte");
+                genNumber, table = document.getElementsByName("spalte"),
+                ok;
 
             this.play = function () {
                 secBegin = Date.now() / 1000;
@@ -287,9 +292,13 @@
 
             function setButton() {
 
+                ok = true;
+
                 genNumber = rand();
                 table[genNumber].appendChild(Field.Button.getButton());
-                buttonID[0].addEventListener("click", Field.manButton );
+                buttonID[0].addEventListener("click", function (){
+                    ok = Field.manButton(ok);
+                });
                 curTable = table[genNumber];
 
             }
