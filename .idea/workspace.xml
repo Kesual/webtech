@@ -32,15 +32,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Aufgabe4/WebTecUe04.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="287" lean-forward="true" selection-start-line="287" selection-end-line="287" />
+            <state relative-caret-position="-1006">
+              <caret line="63" column="81" lean-forward="true" selection-start-line="63" selection-start-column="81" selection-end-line="63" selection-end-column="81" />
               <folding>
                 <element signature="e#909#1212#0" />
                 <element signature="e#2175#3803#0" />
                 <element signature="e#3835#4699#0" />
                 <element signature="e#4735#5012#0" />
                 <element signature="e#5282#7057#0" />
-                <element signature="e#7384#8061#0" />
               </folding>
             </state>
           </provider>
@@ -174,6 +173,7 @@
       <workItem from="1558876489738" duration="19004000" />
       <workItem from="1558970154291" duration="21000" />
       <workItem from="1559669245817" duration="1760000" />
+      <workItem from="1559756425960" duration="2180000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed some code">
       <created>1558614024767</created>
@@ -217,12 +217,12 @@
       <option name="project" value="LOCAL" />
       <updated>1559670698964</updated>
     </task>
-    <task id="LOCAL-00007" summary="Changes">
-      <created>1558210391339</created>
+    <task id="LOCAL-00007" summary="CSS wird nun über insertRule hinzugegeben&#10;Start-Button ist während des Spiels nicht klickbar">
+      <created>1559758954530</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1558210391339</updated>
+      <updated>1559758954530</updated>
     </task>
     <task id="LOCAL-00008" summary="Changes">
       <created>1558211478460</created>
@@ -294,17 +294,17 @@
       <option name="project" value="LOCAL" />
       <updated>1558558122825</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27466000" />
+    <option name="totallyTimeSpent" value="29646000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="-157" width="1920" height="1057" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12992546" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13099042" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -395,7 +395,8 @@
     <MESSAGE value="Fixed some code" />
     <MESSAGE value="Added some Code" />
     <MESSAGE value="Habe gefixt, dass der Button pro Hopps nur 1x geklickt werden kann" />
-    <option name="LAST_COMMIT_MESSAGE" value="Habe gefixt, dass der Button pro Hopps nur 1x geklickt werden kann" />
+    <MESSAGE value="CSS wird nun über insertRule hinzugegeben&#10;Start-Button ist während des Spiels nicht klickbar" />
+    <option name="LAST_COMMIT_MESSAGE" value="CSS wird nun über insertRule hinzugegeben&#10;Start-Button ist während des Spiels nicht klickbar" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Aufgabe1/Aufgabe1.html">
@@ -463,15 +464,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Aufgabe4/WebTecUe04.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="287" lean-forward="true" selection-start-line="287" selection-end-line="287" />
+        <state relative-caret-position="-1006">
+          <caret line="63" column="81" lean-forward="true" selection-start-line="63" selection-start-column="81" selection-end-line="63" selection-end-column="81" />
           <folding>
             <element signature="e#909#1212#0" />
             <element signature="e#2175#3803#0" />
             <element signature="e#3835#4699#0" />
             <element signature="e#4735#5012#0" />
             <element signature="e#5282#7057#0" />
-            <element signature="e#7384#8061#0" />
           </folding>
         </state>
       </provider>
