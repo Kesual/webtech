@@ -4,7 +4,7 @@
 window.addEventListener("load", function(){
 
     let main, maxHeight, range, innerDiv, count, colorArray, colorDivs, textDivs, currentCol,
-        nilCol, button1, button2, button3, button4, min = 50, max = 100, margin = 100;
+        nilCol, button1, button2, button3, button4, min = 50, max = 100;
 
     colorArray = [
         "rgb(0, 0, 0)",
@@ -27,7 +27,7 @@ window.addEventListener("load", function(){
     setMainDiv();
     setDivs();
     addButtons();
-    setInnerDivs(min, max, margin);
+    setInnerDivs(min, max);
     nilCol = setColorDivs();
 
     range = document.getElementById("range");
@@ -118,7 +118,7 @@ window.addEventListener("load", function(){
 
         removeInnerDivs();
 
-        setInnerDivs(min + 10, max + 10, margin + 10);
+        setInnerDivs(min + 10, max + 10);
 
         colorDivs = document.getElementsByName("colorDiv");
         textDivs = document.getElementsByName("textDiv");
@@ -170,9 +170,8 @@ window.addEventListener("load", function(){
         } // set func loop
 
 
-        if (max <= 50){min = 10;} else {min += 10;} //hi
+        if (max <= 50){min = 10;} else {min += 10;}
         if (max < 10){max = 10;} else {max += 10;}
-        margin = max;
 
 
     }); //Button + 10 Pixel
@@ -182,7 +181,7 @@ window.addEventListener("load", function(){
 
         removeInnerDivs();
 
-        setInnerDivs(min, max, margin);
+        setInnerDivs(min, max);
 
         colorDivs = document.getElementsByName("colorDiv");
         textDivs = document.getElementsByName("textDiv");
@@ -236,7 +235,6 @@ window.addEventListener("load", function(){
 
         if (min > 10){min -= 10;} else {min = 1;}
         if (max > 10){max -= 10;} else {max = 5;}
-        margin = max;
 
     }); // Button - 10 Pixel
 
@@ -253,7 +251,7 @@ window.addEventListener("load", function(){
         main.style.width = maxHeight + 50 + "px";
         main.style.height = maxHeight + 50 + "px";
 
-        setInnerDivs(min, max, margin);
+        setInnerDivs(min, max);
 
         colorDivs = document.getElementsByName("colorDiv");
         textDivs = document.getElementsByName("textDiv");
@@ -320,7 +318,7 @@ window.addEventListener("load", function(){
         main.style.width = maxHeight - 50 + "px";
         main.style.height = maxHeight - 50 + "px";
 
-        setInnerDivs(min, max, margin);
+        setInnerDivs(min, max);
 
         colorDivs = document.getElementsByName("colorDiv");
         textDivs = document.getElementsByName("textDiv");
@@ -404,10 +402,9 @@ function addInnerDiv(numb, topBot, color){
     main.appendChild(elem);
 }
 
-function setInnerDivs(min, max, margin) {
+function setInnerDivs(min, max) {
 
-    let main, maxWidth, maxHeight, number, abstand = 0,
-        range, color;
+    let main, maxWidth, maxHeight, number, range, color;
 
     main = document.getElementById("mainDiv");
     range = document.getElementById("range");
@@ -422,17 +419,31 @@ function setInnerDivs(min, max, margin) {
 
     while (maxHeight > 0) {
 
-        if (maxHeight >= margin) {
+        if (maxHeight >= max) {
+
+
+
             while (maxWidth > 0) {
 
                 number = numberGen(min, max);
+
+                /**
+                 * Ich muss VOR der ersten Reihe schon wissen, was mein größter Margin sein wird
+                 * dann kann ich die DIVs in der Reihenfolge erstellen mit einem Array und weiß welcher der größte wert ist an den sich die arrays richten müssen
+                 * Und zum Schluss den Wert des max
+                 */
+
                 color = randColor(parseInt(range.value));
 
                 if (number <= maxWidth) {
-                    addInnerDiv(number, ((margin - number) - abstand) / 2, color);
+                    addInnerDiv(number, (max - number) / 2, color);
+
+
                     maxWidth = maxWidth - number;
                 } else {
-                    addInnerDiv(maxWidth, ((margin - maxWidth) - abstand) / 2, color);
+                    addInnerDiv(maxWidth, (max - maxWidth) / 2, color);
+
+
                     maxWidth -= maxWidth;
                 }
 
@@ -444,10 +455,10 @@ function setInnerDivs(min, max, margin) {
                 color = randColor(parseInt(range.value));
 
                 if (number <= maxWidth) {
-                    addInnerDiv(number, ((maxHeight - number) - abstand) / 2, color);
+                    addInnerDiv(number, (maxHeight - number) / 2, color);
                     maxWidth = maxWidth - number;
                 } else {
-                    addInnerDiv(maxWidth, ((maxHeight - maxWidth) - abstand) / 2, color);
+                    addInnerDiv(maxWidth, (maxHeight - maxWidth) / 2, color);
                     maxWidth -= maxWidth;
                 }
 
@@ -458,7 +469,7 @@ function setInnerDivs(min, max, margin) {
         maxWidth = maxWidth.replace("px", "");
         maxWidth = parseInt(maxWidth);
 
-        maxHeight -= margin;
+        maxHeight -= max;
     }// while Vertikal
 
 }
