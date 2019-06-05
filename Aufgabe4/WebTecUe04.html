@@ -3,22 +3,17 @@
 <head>
     <meta charset="utf-8" />
     <title>WebTec UE04 - hopps</title>
-    <style type="text/css">
-        table {
-            background-color: gray;
-        }
-
-        tr, td{
-            height: 40px;
-            width: 35px;
-            background-color: white;
-        }
-    </style>
+    <style type="text/css"></style>
     <script type='text/javascript'>
         "use strict";
+
         window.addEventListener("load", function () {
 
-            let button1, button2, zeilen, spalten, div1, div2, valueZ, valueS;
+            let sArray = document.styleSheets;
+            sArray[0].insertRule('table { background-color: gray; }', 0);
+            sArray[0].insertRule('tr, td { height: 40px; width: 35px; background-color: white; }', 1);
+
+            let button1, button2, zeilen, spalten, div1, div2, geschwindigkeit = 500, gameOK = true;
 
             addInputField();
             addButtons();
@@ -34,8 +29,10 @@
 
                 if (button1.innerText === "langsam"){
                     button1.innerText = "schnell";
+                    geschwindigkeit = 2000;
                 } else {
                     button1.innerText = "langsam";
+                    geschwindigkeit = 500;
                 }
 
             });
@@ -46,26 +43,29 @@
                 zeilen = zeilen.value;
                 spalten = spalten.value;
 
-                while(div1.firstChild){
-                    div1.removeChild(div1.firstChild);
-                }
-                while(div2.firstChild){
-                    div2.removeChild(div2.firstChild);
-                }
+                while(div1.firstChild){ div1.removeChild(div1.firstChild); }
+                while(div2.firstChild){ div2.removeChild(div2.firstChild); }
+
+                let button = new Button();
+
+                let game = new Field(div2, zeilen, spalten, button);
+                game.setField();
 
                 setStartButton();
 
+                let hopps = new HoppsButtonGame(game, geschwindigkeit);
+
                 let startB = document.getElementById("button3");
-                
-                startB.addEventListener("click", function(){
-        
-                    let game = new Field(zeilen, spalten);
-                    game.setField();
-        
-                });
-            });
-            
-        });
+                startB.addEventListener("click", function () {
+                    if (gameOK) {
+                        gameOK = false;
+                        game.setNull();
+                        hopps.play();
+                        setTimeout(function () { return gameOK = true; }, 16000);
+                    }
+                }); // Start-Button
+            }); // OK-Button
+        }); // window-onload
         
         function addInputField() {
 
@@ -158,15 +158,21 @@
 
         }
 
-        function Field(zeilen, spalten) {
-            
-            let mainDiv = document.getElementById("div2");
+        function Field(div, zeilen, spalten, button) {
+
+            let score = 0, count;
+
+            this.mainDiv = div;
+            this.zeilen = zeilen;
+            this.spalten = spalten;
+            this.Button = button;
+
             this.setField = function () {
-                let table, tBody, tableElem, numb = 0, currTable;
+                let table, tBody, numb = 0, currTable, counter;
                
                 table = document.createElement("TABLE");
                 table.setAttribute("id", "table");
-                mainDiv.appendChild(table);
+                div.appendChild(table);
                 
                 table = document.getElementById("table");
                 tBody = document.createElement("TBODY");
@@ -185,19 +191,126 @@
                         
                         currTable = document.getElementById("zeile" + numb);
                         let tabelleSpalte = document.createElement("TD");
+                        tabelleSpalte.setAttribute("name", "spalte");
                         currTable.appendChild(tabelleSpalte);
                         
                     }
                     numb += 1;
                 }
-                
+
+                counter = document.createElement("P");
+                counter.innerText = score;
+                counter.style.textAlign = "center";
+                counter.style.marginLeft = "49%";
+                counter.style.marginRight = "49%";
+                counter.style.border = "1px solid black";
+                counter.setAttribute("id", "counter");
+                document.body.append(counter);
+
+                count = document.getElementById("counter");
             };
+
+            this.manButton = function (ok) {
+
+                if (ok) {
+                    score += 1;
+                    count.innerText = score;
+                    button.doSth();
+                    ok = false;
+                }
+
+                return ok;
+            };
+
+            this.setNull = function () {
+                score = 0;
+                count.innerText = score;
+            };
+
+        }
+
+        function Button() {
+
+            let button;
+
+            this.getButton = function () {
+                button = document.createElement("BUTTON");
+                button.setAttribute("name", "hoppsButton");
+                button.style.height = "30px";
+                button.innerText = "X";
+
+                return button;
+            };
+
+            this.doSth = function () {
+
+                paintRed();
+                setTimeout(paintDefault, 100);
+
+            };
+
+            function paintRed() {
+                button.style.backgroundColor = "red";
+            }
+
+            function paintDefault() {
+                button.style.backgroundColor = "white";
+            }
+
         }
         
-        function HoppsButton() {
-            
+        function HoppsButtonGame(Field, v) {
+
+            let curTable, secBegin, secCurr, gameTime = 15,
+                buttonID = document.getElementsByName("hoppsButton"),
+                genNumber, table = document.getElementsByName("spalte"),
+                ok;
+
+            this.play = function () {
+                secBegin = Date.now() / 1000;
+                start();
+            };
+
+            function start() {
+
+                secCurr = Date.now() / 1000;
+
+                if ((secBegin + gameTime) >= secCurr){
+
+                    setButton();
+                    setTimeout(removeButton, v);
+
+                    setTimeout(start, v);
+                }
+            }
+
+            function setButton() {
+
+                ok = true;
+
+                genNumber = rand();
+                table[genNumber].appendChild(Field.Button.getButton());
+                buttonID[0].addEventListener("click", function (){
+                    ok = Field.manButton(ok);
+                });
+                curTable = table[genNumber];
+
+            }
+
+            function removeButton () {
+                curTable.removeChild(curTable.firstChild);
+            }
+
+            function rand () {
+
+                let random, max = ((Field.spalten) * (Field.zeilen));
+
+                random = Math.round(Math.random() * (max - 1));
+                return random;
+
+            }
         }
-        
+        // Um mehrere Objekte hinzuzufügen muss ich ein Array in Field erstellen und lasse in HoppsGame schleifen über das array laufen damit ich weiß wie viele objekte vom typ button ich habe
     </script>
 </head>
 <body>
