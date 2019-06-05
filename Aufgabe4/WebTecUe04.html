@@ -3,23 +3,17 @@
 <head>
     <meta charset="utf-8" />
     <title>WebTec UE04 - hopps</title>
-    <style type="text/css">
-        table {
-            background-color: gray;
-        }
-
-        tr, td{
-            height: 40px;
-            width: 35px;
-            background-color: white;
-        }
-    </style>
+    <style type="text/css"></style>
     <script type='text/javascript'>
         "use strict";
 
         window.addEventListener("load", function () {
 
-            let button1, button2, zeilen, spalten, div1, div2, geschwindigkeit = 500;
+            let sArray = document.styleSheets;
+            sArray[0].insertRule('table { background-color: gray; }', 0);
+            sArray[0].insertRule('tr, td { height: 40px; width: 35px; background-color: white; }', 1);
+
+            let button1, button2, zeilen, spalten, div1, div2, geschwindigkeit = 500, gameOK = true;
 
             addInputField();
             addButtons();
@@ -62,15 +56,15 @@
                 let hopps = new HoppsButtonGame(game, geschwindigkeit);
 
                 let startB = document.getElementById("button3");
-                startB.addEventListener("click", function (){
-
-                    game.setNull();
-                    hopps.play();
-
+                startB.addEventListener("click", function () {
+                    if (gameOK) {
+                        gameOK = false;
+                        game.setNull();
+                        hopps.play();
+                        setTimeout(function () { return gameOK = true; }, 16000);
+                    }
                 }); // Start-Button
-
             }); // OK-Button
-            
         }); // window-onload
         
         function addInputField() {
