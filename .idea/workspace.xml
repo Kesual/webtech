@@ -29,23 +29,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Aufgabe3/manipuDOM.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Aufgabe4/WebTecUe04.html">
+        <entry file="file://$PROJECT_DIR$/Aufgabe3/manipuDOM.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1006">
-              <caret line="63" column="81" lean-forward="true" selection-start-line="63" selection-start-column="81" selection-end-line="63" selection-end-column="81" />
+            <state relative-caret-position="382">
+              <caret line="439" lean-forward="true" selection-start-line="439" selection-end-line="439" />
               <folding>
-                <element signature="e#909#1212#0" />
-                <element signature="e#2175#3803#0" />
-                <element signature="e#3835#4699#0" />
-                <element signature="e#4735#5012#0" />
-                <element signature="e#5282#7057#0" />
+                <element signature="e#255#683#0" />
+                <element signature="e#1151#2331#0" />
+                <element signature="e#2400#3283#0" />
+                <element signature="e#3351#5162#0" />
+                <element signature="e#5237#7024#0" />
+                <element signature="e#7100#9047#0" />
+                <element signature="e#9123#11069#0" />
+                <element signature="n#!!block;n#setMainDiv#0" />
+                <element signature="n#!!block;n#addInnerDiv#0" />
+                <element signature="n#!!block;n#numberGen#0" />
+                <element signature="n#!!block;n#randColor#0" />
+                <element signature="n#!!block;n#setDivs#0" />
+                <element signature="n#!!block;n#addButtons#0" />
+                <element signature="n#!!block;n#addcolorDivs#0" />
+                <element signature="n#!!block;n#removeColChilds#0" />
+                <element signature="n#!!block;n#removeInnerDivs#0" />
+                <element signature="n#!!block;n#setColorDivs#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>setInnerDivs</find>
+      <find>margin</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="UPDATE_TYPE" value="MERGE" />
@@ -69,12 +92,12 @@
       <list>
         <option value="$PROJECT_DIR$/Aufgabe1/Aufgabe1.js" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/Aufgabe3/manipuDOM.js" />
         <option value="$PROJECT_DIR$/../../Dokumente/Uni/Studium Flensburg/HS/Webtechnologien/WTÜbung 02.html" />
         <option value="$PROJECT_DIR$/Aufgabe2/Aufgabe2.html" />
         <option value="$PROJECT_DIR$/Aufgabe1/Aufgabe1.html" />
         <option value="$PROJECT_DIR$/Aufgabe2/Aufgabe2.js" />
         <option value="$PROJECT_DIR$/Aufgabe4/WebTecUe04.html" />
+        <option value="$PROJECT_DIR$/Aufgabe3/manipuDOM.js" />
       </list>
     </option>
   </component>
@@ -103,22 +126,7 @@
             <path>
               <item name="webtech" type="b2602c69:ProjectViewProjectNode" />
               <item name="webtech" type="462c0819:PsiDirectoryNode" />
-              <item name="Aufgabe1" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="webtech" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webtech" type="462c0819:PsiDirectoryNode" />
-              <item name="Aufgabe2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="webtech" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webtech" type="462c0819:PsiDirectoryNode" />
               <item name="Aufgabe3" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="webtech" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webtech" type="462c0819:PsiDirectoryNode" />
-              <item name="Aufgabe4" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -174,6 +182,7 @@
       <workItem from="1558970154291" duration="21000" />
       <workItem from="1559669245817" duration="1760000" />
       <workItem from="1559756425960" duration="2180000" />
+      <workItem from="1559759081601" duration="2710000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed some code">
       <created>1558614024767</created>
@@ -224,12 +233,12 @@
       <option name="project" value="LOCAL" />
       <updated>1559758954530</updated>
     </task>
-    <task id="LOCAL-00008" summary="Changes">
-      <created>1558211478460</created>
+    <task id="LOCAL-00008" summary="setInnerDivs ist jetzt OHNE margin wert, da es immer den Wert von max als höchsten wert annimmt">
+      <created>1559761967958</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1558211478460</updated>
+      <updated>1559761967959</updated>
     </task>
     <task id="LOCAL-00009" summary="Fixed some code">
       <created>1558211703276</created>
@@ -294,17 +303,17 @@
       <option name="project" value="LOCAL" />
       <updated>1558558122825</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29646000" />
+    <option name="totallyTimeSpent" value="32356000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="-157" width="1920" height="1057" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13099042" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13205537" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -396,7 +405,8 @@
     <MESSAGE value="Added some Code" />
     <MESSAGE value="Habe gefixt, dass der Button pro Hopps nur 1x geklickt werden kann" />
     <MESSAGE value="CSS wird nun über insertRule hinzugegeben&#10;Start-Button ist während des Spiels nicht klickbar" />
-    <option name="LAST_COMMIT_MESSAGE" value="CSS wird nun über insertRule hinzugegeben&#10;Start-Button ist während des Spiels nicht klickbar" />
+    <MESSAGE value="setInnerDivs ist jetzt OHNE margin wert, da es immer den Wert von max als höchsten wert annimmt" />
+    <option name="LAST_COMMIT_MESSAGE" value="setInnerDivs ist jetzt OHNE margin wert, da es immer den Wert von max als höchsten wert annimmt" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Aufgabe1/Aufgabe1.html">
@@ -420,9 +430,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Aufgabe3/manipuDOM.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="607">
@@ -437,17 +444,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Aufgabe1/ReloadSthWButton.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Aufgabe4/WebTecUe04.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="63" column="81" selection-start-line="63" selection-start-column="81" selection-end-line="63" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Aufgabe3/manipuDOM.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/Aufgabe3/manipuDOM.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="468" column="4" lean-forward="true" selection-start-line="468" selection-start-column="4" selection-end-line="469" selection-end-column="18" />
+        <state relative-caret-position="382">
+          <caret line="439" lean-forward="true" selection-start-line="439" selection-end-line="439" />
           <folding>
             <element signature="e#255#683#0" />
             <element signature="e#1151#2331#0" />
             <element signature="e#2400#3283#0" />
+            <element signature="e#3351#5162#0" />
+            <element signature="e#5237#7024#0" />
+            <element signature="e#7100#9047#0" />
+            <element signature="e#9123#11069#0" />
             <element signature="n#!!block;n#setMainDiv#0" />
             <element signature="n#!!block;n#addInnerDiv#0" />
-            <element signature="n#!!block;n#setInnerDivs#0" />
+            <element signature="n#!!block;n#numberGen#0" />
             <element signature="n#!!block;n#randColor#0" />
             <element signature="n#!!block;n#setDivs#0" />
             <element signature="n#!!block;n#addButtons#0" />
@@ -455,23 +479,6 @@
             <element signature="n#!!block;n#removeColChilds#0" />
             <element signature="n#!!block;n#removeInnerDivs#0" />
             <element signature="n#!!block;n#setColorDivs#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Aufgabe1/ReloadSthWButton.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Aufgabe4/WebTecUe04.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1006">
-          <caret line="63" column="81" lean-forward="true" selection-start-line="63" selection-start-column="81" selection-end-line="63" selection-end-column="81" />
-          <folding>
-            <element signature="e#909#1212#0" />
-            <element signature="e#2175#3803#0" />
-            <element signature="e#3835#4699#0" />
-            <element signature="e#4735#5012#0" />
-            <element signature="e#5282#7057#0" />
           </folding>
         </state>
       </provider>
